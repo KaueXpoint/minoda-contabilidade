@@ -16,7 +16,7 @@
 
 /* Masked lines utility matching GSAP ScrollTrigger headlines */
 .minoda-masked-line{display:block;overflow:hidden;padding-bottom:0.05em}
-.minoda-masked-line>span{display:block;transform:translateY(110%);will-change:transform}
+.minoda-masked-line>span{display:block;transform:none;will-change:transform}
 
 /* Premium iPhone Mockup - Strict Fixed Sizing */
 .minoda-chat-phone{position:relative;box-sizing:border-box!important;width:304px!important;min-width:304px!important;max-width:304px!important;height:520px!important;min-height:520px!important;max-height:520px!important;padding:8px;border:2px solid #5a5a5c;border-radius:44px;background:linear-gradient(135deg,#38383a 0%,#1c1c1e 35%,#111 65%,#3a3a3c 100%);box-shadow:0 0 0 1px rgba(255,255,255,0.12),0 0 0 3px #18181a,0 0 0 4px #444,0 18px 36px -12px rgba(0,0,0,0.5);isolation:isolate;flex-shrink:0!important}
