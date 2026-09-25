@@ -417,8 +417,16 @@ export function mountThermometer(root) {
     try {
       let jsPDFClass = window.jspdf?.jsPDF;
       if (!jsPDFClass) {
-        const mod = await import('/assets/jspdf.umd.min.js');
-        jsPDFClass = mod?.jsPDF || window.jspdf?.jsPDF;
+        if (!window.jspdf) {
+          await new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = '/assets/jspdf.umd.min.js';
+            s.onload = resolve;
+            s.onerror = () => reject(new Error('Erro ao carregar jsPDF'));
+            document.head.appendChild(s);
+          });
+        }
+        jsPDFClass = window.jspdf?.jsPDF;
       }
       if (!jsPDFClass) throw new Error('jsPDF indisponível');
 

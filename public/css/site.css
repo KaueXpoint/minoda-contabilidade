@@ -52,13 +52,13 @@
 .minoda-tax-key-before{background:#d8786b}.minoda-tax-key-after{background:#9dd8b7}
 .minoda-tax-controls{display:none;grid-template-columns:repeat(3,1fr);gap:5px;border-top:1px solid #ffffff15;margin-top:1.5rem;padding-top:1rem}
 .minoda-tax-controls button{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.7rem .25rem;border-radius:8px;background:transparent;color:#acb6af;font-size:.75rem;cursor:pointer;transition:background 180ms var(--ease-standard),color 180ms var(--ease-standard)}
-.minoda-tax-controls button>span{font-size:.57rem;opacity:.55}
+.minoda-tax-controls button>span{font-size:.57rem;color:#b2c0b6;opacity:.95}
 .minoda-tax-controls button[aria-pressed="true"]{background:#e2eddf;color:#152519}
 .minoda-tax-controls button:focus-visible{outline:2px solid #e2eddf;outline-offset:2px}
 @media(hover:hover) and (pointer:fine){.minoda-tax-controls button:not([aria-pressed="true"]):hover{background:#ffffff0d;color:#fff}}
 .minoda-tax-progress{display:none;position:absolute;bottom:0;left:0;right:0;height:3px;background:#ffffff0b}
 .minoda-tax-progress span{display:block;height:100%;background:#b5d7ad}
-.minoda-tax-note{grid-column:2;color:#737373;font-size:.7rem;line-height:1.65;margin:0;max-width:none;padding:0;border:0}
+.minoda-tax-note{grid-column:2;color:#555555;font-size:.7rem;line-height:1.65;margin:0;max-width:none;padding:0;border:0}
 .minoda-tax-note strong{font-weight:500;color:#484848}
 .minoda-tax-enhanced .minoda-tax-story{height:calc(100svh + 1000px)}
 .minoda-tax-enhanced .minoda-tax-sticky{position:sticky;top:clamp(24px,calc((100svh - 540px)/2),140px)}
