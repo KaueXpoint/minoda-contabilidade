@@ -1,0 +1,38 @@
+:root{--mono-ink:#080808;--mono-paper:#f2f2f2;--mono-line:rgba(8,8,8,.15);--mono-muted:#666}
+.minoda-thermometer{background:var(--mono-paper);color:var(--mono-ink);padding:clamp(3.5rem,7vw,6.5rem) 0}
+.minoda-diagnostic-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);align-items:center;gap:clamp(2rem,8vw,8rem)}
+.minoda-diagnostic-copy{max-width:620px}
+.minoda-diagnostic-copy .eyebrow{margin-bottom:1.25rem}
+.minoda-diagnostic-copy h2{font-size:clamp(2.8rem,6.5vw,6.6rem);line-height:.93;letter-spacing:-.065em;margin:0;max-width:8ch}
+.minoda-diagnostic-description{color:#505050;font-size:clamp(1rem,1.5vw,1.3rem);line-height:1.45;max-width:40ch;margin:1.5rem 0 1.75rem}
+.minoda-mono-button{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;border:1px solid var(--mono-ink);border-radius:999px;background:var(--mono-ink);color:#fff;padding:.85rem 1.15rem;font:600 .9rem/1.1 inherit;cursor:pointer;transition:transform .35s cubic-bezier(.16,1,.3,1),background .35s,color .35s}
+.minoda-mono-button:hover{transform:translateY(-3px);background:#333}
+.minoda-diagnostic-facts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.75rem}
+.minoda-diagnostic-facts span{border:1px solid var(--mono-line);border-radius:999px;padding:.45rem .7rem;color:#525252;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.minoda-diagnostic-disclaimer{color:#777;font-size:.72rem;line-height:1.45;max-width:42ch;margin-top:1.4rem}
+.minoda-phone-stage{display:grid;justify-items:center}
+.minoda-chat-phone{position:relative;width:min(100%,370px);padding:10px;border:2px solid #111;border-radius:45px;background:#111;box-shadow:0 26px 70px rgba(8,8,8,.22);transform:translateY(20px);opacity:.001;animation:minoda-phone-in .9s cubic-bezier(.16,1,.3,1) .1s forwards}
+.minoda-chat-phone.is-expanded{width:min(100%,470px)}
+.minoda-chat-screen{position:relative;overflow:hidden;border-radius:35px;background:#f8f8f8;min-height:545px;display:flex;flex-direction:column}
+.minoda-phone-status{height:30px;padding:9px 18px 0;display:flex;align-items:center;justify-content:space-between;color:#555;font-size:.62rem;font-weight:600}
+.minoda-dynamic-island{position:absolute;top:8px;left:50%;width:90px;height:22px;border-radius:999px;background:#080808;transform:translateX(-50%)}
+.minoda-chat-header{display:flex;align-items:center;gap:.65rem;border-bottom:1px solid #ddd;padding:14px 16px}
+.minoda-chat-header img{width:30px;height:30px;filter:grayscale(1)}
+.minoda-chat-header div{display:grid;gap:2px;min-width:0}.minoda-chat-header strong{font-size:.85rem}.minoda-chat-header span{font-size:.65rem;color:#777}
+.minoda-chat-expand{margin-left:auto;border:1px solid #c9c9c9;border-radius:50%;background:#fff;width:30px;height:30px;cursor:pointer}
+.minoda-chat-progress{padding:14px 16px 10px;display:grid;grid-template-columns:1fr auto;gap:7px 10px;color:#666;font-size:.64rem;text-transform:uppercase;letter-spacing:.1em}
+.minoda-chat-progress>div{grid-column:1/-1;height:3px;background:#ddd;border-radius:99px;overflow:hidden}.minoda-chat-progress i{display:block;height:100%;width:0;background:#080808;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.minoda-chat-log{display:flex;flex:1;flex-direction:column;gap:10px;overflow:auto;padding:8px 16px 10px;min-height:245px;scroll-behavior:smooth}
+.minoda-chat-message{max-width:86%;animation:minoda-message-in .4s cubic-bezier(.16,1,.3,1)}.minoda-chat-message p{margin:0;border-radius:16px;padding:10px 12px;font-size:.8rem;line-height:1.4;background:#e8e8e8;color:#222}.minoda-chat-message.is-user{align-self:flex-end}.minoda-chat-message.is-user p{background:#080808;color:#fff;border-bottom-right-radius:5px}.minoda-chat-message.is-bot p{border-bottom-left-radius:5px}
+.minoda-chat-controls{display:flex;gap:7px;flex-wrap:wrap;padding:10px 16px}.minoda-chat-controls button,.minoda-chat-whatsapp{border:1px solid #111;border-radius:999px;background:#fff;color:#111;padding:.62rem .8rem;font:600 .72rem inherit;cursor:pointer;text-decoration:none;transition:background .25s,color .25s,transform .25s}.minoda-chat-controls button:hover,.minoda-chat-whatsapp:hover{background:#111;color:#fff;transform:translateY(-2px)}
+.minoda-chat-composer{display:flex;gap:7px;padding:8px 16px 10px;border-top:1px solid #ddd}.minoda-chat-composer input{min-width:0;flex:1;border:1px solid #cfcfcf;border-radius:999px;background:#fff;padding:.72rem .85rem;color:#111;font:inherit;font-size:.78rem}.minoda-chat-composer button{width:38px;border:0;border-radius:50%;background:#080808;color:#fff;cursor:pointer;font-size:1.1rem}
+.minoda-chat-error{min-height:16px;margin:0;padding:0 16px;color:#8d1f1f;font-size:.66rem}.minoda-chat-bottom{display:flex;justify-content:space-between;align-items:center;padding:4px 16px 13px;color:#8a8a8a;font-size:.61rem}.minoda-chat-bottom button{border:0;background:none;text-decoration:underline;color:#555;cursor:pointer;padding:0}
+.minoda-phone-home{width:95px;height:4px;border-radius:999px;background:#111;margin:8px auto 4px}
+.minoda-phone-caption{margin:.9rem 0 0;color:#777;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.minoda-checkout{background:#080808;color:#f2f2f2;padding:clamp(3.5rem,7vw,6rem) 0}
+.minoda-checkout-grid{display:grid;grid-template-columns:1fr minmax(300px,470px);gap:clamp(2rem,10vw,10rem);align-items:end}
+.minoda-checkout h2{font-size:clamp(2.5rem,5vw,5.3rem);line-height:.96;letter-spacing:-.06em;margin:0;max-width:10ch}.minoda-checkout .eyebrow{color:#aaa;margin-bottom:1.1rem}.minoda-checkout-action p{color:#bbb;line-height:1.5;max-width:42ch;margin:0 0 1.4rem}.minoda-mono-button.is-light{background:#f2f2f2;color:#080808;border-color:#f2f2f2}.minoda-mono-button.is-light:hover{background:#fff}.minoda-checkout-action small{display:block;margin-top:.9rem;color:#777;font-size:.7rem}
+@keyframes minoda-phone-in{to{transform:none;opacity:1}}@keyframes minoda-message-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:800px){.minoda-thermometer{padding:3rem 0 4rem}.minoda-diagnostic-grid,.minoda-checkout-grid{grid-template-columns:1fr;gap:2.5rem}.minoda-diagnostic-copy h2{font-size:clamp(2.7rem,14vw,5rem)}.minoda-phone-stage{justify-items:stretch}.minoda-chat-phone{margin:auto;width:min(100%,360px)}.minoda-chat-screen{min-height:530px}.minoda-checkout{padding:3.5rem 0 4rem}.minoda-checkout h2{font-size:clamp(2.8rem,13vw,5rem)}}
+@media(prefers-reduced-motion:reduce){.minoda-chat-phone,.minoda-chat-message{animation:none;opacity:1;transform:none}.minoda-mono-button,.minoda-chat-controls button,.minoda-chat-whatsapp{transition:none}}
+
