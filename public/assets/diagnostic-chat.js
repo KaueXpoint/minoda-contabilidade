@@ -29,6 +29,8 @@ const mounted = new WeakMap();
 
 export function setupSectionAnimations() {
   if (typeof window === 'undefined') return;
+  let active = true;
+  let animationContext;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const runAnimations = (gsap, ScrollTrigger) => {
@@ -58,7 +60,7 @@ export function setupSectionAnimations() {
           );
         }
         if (lines.length) {
-          gsap.to(lines, {
+          gsap.fromTo(lines, { y: '110%' }, {
             y: '0%',
             duration: 0.9,
             stagger: 0.08,
@@ -107,7 +109,7 @@ export function setupSectionAnimations() {
           );
         }
         if (lines.length) {
-          gsap.to(lines, {
+          gsap.fromTo(lines, { y: '110%' }, {
             y: '0%',
             duration: 0.9,
             stagger: 0.08,
@@ -131,13 +133,15 @@ export function setupSectionAnimations() {
     import('/js/gsap.js'),
     import('/js/scroll-trigger.js')
   ]).then(([{ gsap }, { ScrollTrigger }]) => {
-    runAnimations(gsap, ScrollTrigger);
+    if (active) animationContext = gsap.context(() => runAnimations(gsap, ScrollTrigger));
   }).catch(err => {
+    if (!active) return;
     console.warn('GSAP reveal animations fallback:', err);
     document.querySelectorAll('.minoda-masked-line > span').forEach(s => {
       s.style.transform = 'translateY(0%)';
     });
   });
+  return () => { active = false; animationContext?.revert(); };
 }
 
 export function mountThermometer(root) {
@@ -145,7 +149,7 @@ export function mountThermometer(root) {
   mounted.get(root)?.();
 
   // Run GSAP ScrollTrigger reveal animations for these sections
-  setupSectionAnimations();
+  const cleanupAnimations = setupSectionAnimations();
 
   const find = name => root.querySelector(`[data-chat-${name}]`);
   const log = find('log');
@@ -253,7 +257,7 @@ export function mountThermometer(root) {
       mode === 'demo' ? 'Demonstração' :
       mode === 'profile' ? 'Identificação' :
       mode === 'result' ? 'Diagnóstico concluído' :
-      `Pergunta ${questionIndex + 1} de 5`;
+      `Pergunta ${Math.min(questionIndex + 1, QUESTIONS.length)} de 5`;
   };
 
   const button = (text, action, value) => {
@@ -534,9 +538,6 @@ export function mountThermometer(root) {
 
   // Listeners
   listen(start, 'click', () => begin(true));
-  listen(phone, 'click', () => {
-    if (mode === 'demo') begin(true);
-  });
 
   listen(form, 'submit', e => {
     e.preventDefault();
@@ -574,6 +575,9 @@ export function mountThermometer(root) {
   listen(reset, 'click', () => {
     cancelPending();
     mode = 'demo';
+    busy = false;
+    if (error) error.textContent = '';
+    if (demoToggle) demoToggle.hidden = false;
     profileIndex = 0;
     questionIndex = 0;
     answers = [];
@@ -586,6 +590,7 @@ export function mountThermometer(root) {
     controls.replaceChildren();
     button('Iniciar meu diagnóstico', 'begin');
     log.setAttribute('aria-live', 'off');
+    updateProgress();
     restartDemo();
   });
 
@@ -616,18 +621,11 @@ export function mountThermometer(root) {
 
   const cleanup = () => {
     cancelPending();
+    cleanupAnimations?.();
     observer.disconnect();
     controller.abort();
     mounted.delete(root);
   };
   mounted.set(root, cleanup);
   return cleanup;
-}
-
-if (typeof document !== 'undefined') {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setupSectionAnimations());
-  } else {
-    setupSectionAnimations();
-  }
 }
