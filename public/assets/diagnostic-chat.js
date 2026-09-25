@@ -27,9 +27,125 @@ const DEMO = [
 
 const mounted = new WeakMap();
 
+export function setupSectionAnimations() {
+  if (typeof window === 'undefined') return;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const runAnimations = (gsap, ScrollTrigger) => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. Diagnóstico Financeiro Section
+    const diagSection = document.getElementById('termometro-financeiro');
+    if (diagSection) {
+      const copy = diagSection.querySelector('.minoda-diagnostic-copy');
+      const lines = diagSection.querySelectorAll('.minoda-diagnostic-copy .minoda-masked-line > span');
+      const eyebrow = diagSection.querySelector('.minoda-diagnostic-copy .eyebrow');
+      const otherCopy = diagSection.querySelectorAll('.minoda-diagnostic-description, .minoda-diagnostic-start, .minoda-diagnostic-facts, .minoda-diagnostic-disclaimer');
+      const phoneStage = diagSection.querySelector('.minoda-phone-stage');
+
+      if (prefersReduced) {
+        if (lines.length) gsap.set(lines, { y: '0%' });
+        if (eyebrow) gsap.set(eyebrow, { opacity: 1, y: 0 });
+        if (otherCopy.length) gsap.set(otherCopy, { opacity: 1, y: 0 });
+        if (phoneStage) gsap.set(phoneStage, { opacity: 1, y: 0, scale: 1 });
+      } else {
+        if (eyebrow) {
+          gsap.fromTo(eyebrow,
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+              scrollTrigger: { trigger: copy || diagSection, start: 'top 85%', once: true }
+            }
+          );
+        }
+        if (lines.length) {
+          gsap.to(lines, {
+            y: '0%',
+            duration: 0.9,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: copy || diagSection, start: 'top 85%', once: true }
+          });
+        }
+        if (otherCopy.length) {
+          gsap.fromTo(otherCopy,
+            { opacity: 0, y: 22 },
+            { opacity: 1, y: 0, duration: 0.8, stagger: 0.09, delay: 0.15, ease: 'power3.out',
+              scrollTrigger: { trigger: copy || diagSection, start: 'top 85%', once: true }
+            }
+          );
+        }
+        if (phoneStage) {
+          gsap.fromTo(phoneStage,
+            { opacity: 0, y: 35, scale: 0.96 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.95, delay: 0.15, ease: 'power3.out',
+              scrollTrigger: { trigger: phoneStage, start: 'top 85%', once: true }
+            }
+          );
+        }
+      }
+    }
+
+    // 2. Gestão Financeira (Checkout) Section
+    const checkoutSection = document.getElementById('gestao-financeira');
+    if (checkoutSection) {
+      const grid = checkoutSection.querySelector('.minoda-checkout-grid');
+      const eyebrow = checkoutSection.querySelector('.eyebrow');
+      const lines = checkoutSection.querySelectorAll('.minoda-masked-line > span');
+      const action = checkoutSection.querySelector('.minoda-checkout-action');
+
+      if (prefersReduced) {
+        if (lines.length) gsap.set(lines, { y: '0%' });
+        if (eyebrow) gsap.set(eyebrow, { opacity: 1, y: 0 });
+        if (action) gsap.set(action, { opacity: 1, y: 0 });
+      } else {
+        if (eyebrow) {
+          gsap.fromTo(eyebrow,
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+              scrollTrigger: { trigger: grid || checkoutSection, start: 'top 85%', once: true }
+            }
+          );
+        }
+        if (lines.length) {
+          gsap.to(lines, {
+            y: '0%',
+            duration: 0.9,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: grid || checkoutSection, start: 'top 85%', once: true }
+          });
+        }
+        if (action) {
+          gsap.fromTo(action,
+            { opacity: 0, y: 24 },
+            { opacity: 1, y: 0, duration: 0.8, delay: 0.15, ease: 'power3.out',
+              scrollTrigger: { trigger: grid || checkoutSection, start: 'top 85%', once: true }
+            }
+          );
+        }
+      }
+    }
+  };
+
+  Promise.all([
+    import('/js/gsap.js'),
+    import('/js/scroll-trigger.js')
+  ]).then(([{ gsap }, { ScrollTrigger }]) => {
+    runAnimations(gsap, ScrollTrigger);
+  }).catch(err => {
+    console.warn('GSAP reveal animations fallback:', err);
+    document.querySelectorAll('.minoda-masked-line > span').forEach(s => {
+      s.style.transform = 'translateY(0%)';
+    });
+  });
+}
+
 export function mountThermometer(root) {
   if (!root) return () => {};
   mounted.get(root)?.();
+
+  // Run GSAP ScrollTrigger reveal animations for these sections
+  setupSectionAnimations();
 
   const find = name => root.querySelector(`[data-chat-${name}]`);
   const log = find('log');
@@ -80,8 +196,31 @@ export function mountThermometer(root) {
     log.querySelectorAll('.is-typing').forEach(el => el.remove());
   };
 
-  const scrollLog = () => {
-    log.scrollTop = log.scrollHeight;
+  const updateMessageFading = () => {
+    const bubbles = [...log.querySelectorAll('.minoda-chat-message:not(.is-typing)')];
+    const total = bubbles.length;
+    bubbles.forEach((b, idx) => {
+      const distFromEnd = total - 1 - idx;
+      if (distFromEnd >= 3) {
+        b.classList.add('is-faded');
+      } else {
+        b.classList.remove('is-faded');
+      }
+      if (distFromEnd >= 5) {
+        b.classList.add('is-hidden');
+      } else {
+        b.classList.remove('is-hidden');
+      }
+    });
+  };
+
+  const scrollLog = (instant = false) => {
+    requestAnimationFrame(() => {
+      log.scrollTo({
+        top: log.scrollHeight,
+        behavior: instant || reduced.matches ? 'instant' : 'smooth'
+      });
+    });
   };
 
   const message = (text, role = 'bot') => {
@@ -91,6 +230,7 @@ export function mountThermometer(root) {
     content.textContent = text;
     bubble.append(content);
     log.append(bubble);
+    updateMessageFading();
     scrollLog();
   };
 
@@ -191,6 +331,7 @@ export function mountThermometer(root) {
     profile = {};
     busy = false;
 
+    // Clear demo messages cleanly
     log.replaceChildren();
     log.setAttribute('aria-live', 'polite');
     if (status) status.textContent = 'Diagnóstico ativo';
@@ -383,40 +524,45 @@ export function mountThermometer(root) {
   };
 
   const syncDemo = () => {
-    if (mode === 'demo') restartDemo();
+    if (mode !== 'demo') return;
+    if (visible && !document.hidden && !demoPaused && !reduced.matches) {
+      if (timers.size === 0) demoStep();
+    } else {
+      cancelPending();
+    }
   };
 
-  // Event Listeners
-  listen(start, 'click', () => begin());
+  // Listeners
+  listen(start, 'click', () => begin(true));
+  listen(phone, 'click', () => {
+    if (mode === 'demo') begin(true);
+  });
 
-  listen(form, 'submit', event => {
-    event.preventDefault();
+  listen(form, 'submit', e => {
+    e.preventDefault();
     handleSend();
   });
 
-  if (sendBtn) {
-    listen(sendBtn, 'click', event => {
-      event.preventDefault();
-      handleSend();
-    });
-  }
-
-  listen(input, 'keydown', event => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
+  listen(input, 'keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
       handleSend();
     }
   });
 
-  listen(controls, 'click', event => {
-    const el = event.target.closest('[data-chat-action]');
-    if (!el || busy) return;
-    const action = el.dataset.chatAction;
-    if (action === 'begin') begin();
-    if (action === 'skip') submitProfile('');
-    if (action === 'download') download();
-    if (action === 'answer' && mode === 'questions') {
-      const val = el.dataset.value;
+  listen(controls, 'click', e => {
+    const btn = e.target.closest('button');
+    if (!btn || busy) return;
+    const action = btn.dataset.chatAction;
+    const val = btn.dataset.value;
+
+    if (action === 'begin') {
+      begin(true);
+    } else if (action === 'skip') {
+      submitProfile('');
+    } else if (action === 'download') {
+      download();
+    } else if (action === 'answer' && val) {
       answers.push(val);
       message(val === 'sim' ? 'Sim' : 'Ainda não', 'user');
       questionIndex++;
@@ -476,4 +622,12 @@ export function mountThermometer(root) {
   };
   mounted.set(root, cleanup);
   return cleanup;
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setupSectionAnimations());
+  } else {
+    setupSectionAnimations();
+  }
 }

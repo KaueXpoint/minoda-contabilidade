@@ -2,7 +2,11 @@
   <div class="container-xl minoda-diagnostic-grid">
     <div class="minoda-diagnostic-copy" data-diagnostic-reveal>
       <p class="eyebrow">Diagnóstico financeiro</p>
-      <h2 id="thermometer-title">Seu financeiro.<br>Uma conversa<br>mais clara.</h2>
+      <h2 id="thermometer-title" aria-label="Seu financeiro. Uma conversa mais clara.">
+        <span class="minoda-masked-line"><span class="block">Seu financeiro.</span></span>
+        <span class="minoda-masked-line"><span class="block">Uma conversa</span></span>
+        <span class="minoda-masked-line"><span class="block">mais clara.</span></span>
+      </h2>
       <p class="minoda-diagnostic-description">Como está a saúde financeira da sua empresa? Converse com o assistente da Minoda e descubra o que já funciona e o que merece atenção.</p>
       <button class="btn btn-primary minoda-diagnostic-start" type="button" data-chat-start><span data-chat-start-label>Começar meu diagnóstico</span><span class="minoda-arrow-circle" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17 17 7"/></svg></span></button>
       <div class="minoda-diagnostic-facts"><span>5 perguntas</span><span>Resultado na hora</span><span>Relatório em PDF</span></div>
@@ -18,7 +22,7 @@
           <div class="minoda-chat-log" data-chat-log role="log" aria-label="Conversa do diagnóstico" aria-live="polite" aria-relevant="additions text" tabindex="0"><div class="minoda-chat-message is-bot"><p>Olá! Sou o assistente da Minoda.</p></div><div class="minoda-chat-message is-bot"><p>Vamos olhar para o financeiro do seu negócio?</p></div></div>
           <div class="minoda-chat-controls" data-chat-controls><button type="button" data-chat-action="begin">Iniciar meu diagnóstico</button></div>
           <p class="minoda-chat-error" data-chat-error role="alert"></p>
-          <form class="minoda-chat-composer" data-chat-composer novalidate hidden><label class="sr-only" for="minoda-chat-answer">Seu nome</label><input id="minoda-chat-answer" name="answer" placeholder="Seu nome" autocomplete="given-name" enterkeyhint="send" maxlength="160"><button type="submit" aria-label="Enviar resposta"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7M12 19V5"/></svg></button></form>
+          <form class="minoda-chat-composer" data-chat-composer novalidate hidden><label class="sr-only" for="minoda-chat-answer">Seu nome</label><input id="minoda-chat-answer" name="answer" placeholder="Seu nome" autocomplete="given-name" enterkeyhint="send" maxlength="160"><button type="submit" aria-label="Enviar resposta"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7M12 19V5"/></svg></button></form>
           <div class="minoda-chat-bottom"><button type="button" data-chat-reset hidden>Recomeçar</button><span>Suas respostas ficam neste navegador.</span></div>
           <div class="minoda-phone-home" aria-hidden="true"></div>
         </div>
