@@ -1,38 +1,112 @@
-:root{--mono-ink:#080808;--mono-paper:#f2f2f2;--mono-line:rgba(8,8,8,.15);--mono-muted:#666}
-.minoda-thermometer{background:var(--mono-paper);color:var(--mono-ink);padding:clamp(3.5rem,7vw,6.5rem) 0}
-.minoda-diagnostic-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,430px);align-items:center;gap:clamp(2rem,8vw,8rem)}
-.minoda-diagnostic-copy{max-width:620px}
-.minoda-diagnostic-copy .eyebrow{margin-bottom:1.25rem}
-.minoda-diagnostic-copy h2{font-size:clamp(2.8rem,6.5vw,6.6rem);line-height:.93;letter-spacing:-.065em;margin:0;max-width:8ch}
-.minoda-diagnostic-description{color:#505050;font-size:clamp(1rem,1.5vw,1.3rem);line-height:1.45;max-width:40ch;margin:1.5rem 0 1.75rem}
-.minoda-mono-button{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;border:1px solid var(--mono-ink);border-radius:999px;background:var(--mono-ink);color:#fff;padding:.85rem 1.15rem;font:600 .9rem/1.1 inherit;cursor:pointer;transition:transform .35s cubic-bezier(.16,1,.3,1),background .35s,color .35s}
-.minoda-mono-button:hover{transform:translateY(-3px);background:#333}
-.minoda-diagnostic-facts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.75rem}
-.minoda-diagnostic-facts span{border:1px solid var(--mono-line);border-radius:999px;padding:.45rem .7rem;color:#525252;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
-.minoda-diagnostic-disclaimer{color:#777;font-size:.72rem;line-height:1.45;max-width:42ch;margin-top:1.4rem}
-.minoda-phone-stage{display:grid;justify-items:center}
-.minoda-chat-phone{position:relative;width:min(100%,370px);padding:10px;border:2px solid #111;border-radius:45px;background:#111;box-shadow:0 26px 70px rgba(8,8,8,.22);transform:translateY(20px);opacity:.001;animation:minoda-phone-in .9s cubic-bezier(.16,1,.3,1) .1s forwards}
-.minoda-chat-phone.is-expanded{width:min(100%,470px)}
-.minoda-chat-screen{position:relative;overflow:hidden;border-radius:35px;background:#f8f8f8;min-height:545px;display:flex;flex-direction:column}
-.minoda-phone-status{height:30px;padding:9px 18px 0;display:flex;align-items:center;justify-content:space-between;color:#555;font-size:.62rem;font-weight:600}
-.minoda-dynamic-island{position:absolute;top:8px;left:50%;width:90px;height:22px;border-radius:999px;background:#080808;transform:translateX(-50%)}
-.minoda-chat-header{display:flex;align-items:center;gap:.65rem;border-bottom:1px solid #ddd;padding:14px 16px}
-.minoda-chat-header img{width:30px;height:30px;filter:grayscale(1)}
-.minoda-chat-header div{display:grid;gap:2px;min-width:0}.minoda-chat-header strong{font-size:.85rem}.minoda-chat-header span{font-size:.65rem;color:#777}
-.minoda-chat-expand{margin-left:auto;border:1px solid #c9c9c9;border-radius:50%;background:#fff;width:30px;height:30px;cursor:pointer}
-.minoda-chat-progress{padding:14px 16px 10px;display:grid;grid-template-columns:1fr auto;gap:7px 10px;color:#666;font-size:.64rem;text-transform:uppercase;letter-spacing:.1em}
-.minoda-chat-progress>div{grid-column:1/-1;height:3px;background:#ddd;border-radius:99px;overflow:hidden}.minoda-chat-progress i{display:block;height:100%;width:0;background:#080808;transition:width .5s cubic-bezier(.16,1,.3,1)}
-.minoda-chat-log{display:flex;flex:1;flex-direction:column;gap:10px;overflow:auto;padding:8px 16px 10px;min-height:245px;scroll-behavior:smooth}
-.minoda-chat-message{max-width:86%;animation:minoda-message-in .4s cubic-bezier(.16,1,.3,1)}.minoda-chat-message p{margin:0;border-radius:16px;padding:10px 12px;font-size:.8rem;line-height:1.4;background:#e8e8e8;color:#222}.minoda-chat-message.is-user{align-self:flex-end}.minoda-chat-message.is-user p{background:#080808;color:#fff;border-bottom-right-radius:5px}.minoda-chat-message.is-bot p{border-bottom-left-radius:5px}
-.minoda-chat-controls{display:flex;gap:7px;flex-wrap:wrap;padding:10px 16px}.minoda-chat-controls button,.minoda-chat-whatsapp{border:1px solid #111;border-radius:999px;background:#fff;color:#111;padding:.62rem .8rem;font:600 .72rem inherit;cursor:pointer;text-decoration:none;transition:background .25s,color .25s,transform .25s}.minoda-chat-controls button:hover,.minoda-chat-whatsapp:hover{background:#111;color:#fff;transform:translateY(-2px)}
-.minoda-chat-composer{display:flex;gap:7px;padding:8px 16px 10px;border-top:1px solid #ddd}.minoda-chat-composer input{min-width:0;flex:1;border:1px solid #cfcfcf;border-radius:999px;background:#fff;padding:.72rem .85rem;color:#111;font:inherit;font-size:.78rem}.minoda-chat-composer button{width:38px;border:0;border-radius:50%;background:#080808;color:#fff;cursor:pointer;font-size:1.1rem}
-.minoda-chat-error{min-height:16px;margin:0;padding:0 16px;color:#8d1f1f;font-size:.66rem}.minoda-chat-bottom{display:flex;justify-content:space-between;align-items:center;padding:4px 16px 13px;color:#8a8a8a;font-size:.61rem}.minoda-chat-bottom button{border:0;background:none;text-decoration:underline;color:#555;cursor:pointer;padding:0}
-.minoda-phone-home{width:95px;height:4px;border-radius:999px;background:#111;margin:8px auto 4px}
-.minoda-phone-caption{margin:.9rem 0 0;color:#777;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
-.minoda-checkout{background:#080808;color:#f2f2f2;padding:clamp(3.5rem,7vw,6rem) 0}
-.minoda-checkout-grid{display:grid;grid-template-columns:1fr minmax(300px,470px);gap:clamp(2rem,10vw,10rem);align-items:end}
-.minoda-checkout h2{font-size:clamp(2.5rem,5vw,5.3rem);line-height:.96;letter-spacing:-.06em;margin:0;max-width:10ch}.minoda-checkout .eyebrow{color:#aaa;margin-bottom:1.1rem}.minoda-checkout-action p{color:#bbb;line-height:1.5;max-width:42ch;margin:0 0 1.4rem}.minoda-mono-button.is-light{background:#f2f2f2;color:#080808;border-color:#f2f2f2}.minoda-mono-button.is-light:hover{background:#fff}.minoda-checkout-action small{display:block;margin-top:.9rem;color:#777;font-size:.7rem}
-@keyframes minoda-phone-in{to{transform:none;opacity:1}}@keyframes minoda-message-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media(max-width:800px){.minoda-thermometer{padding:3rem 0 4rem}.minoda-diagnostic-grid,.minoda-checkout-grid{grid-template-columns:1fr;gap:2.5rem}.minoda-diagnostic-copy h2{font-size:clamp(2.7rem,14vw,5rem)}.minoda-phone-stage{justify-items:stretch}.minoda-chat-phone{margin:auto;width:min(100%,360px)}.minoda-chat-screen{min-height:530px}.minoda-checkout{padding:3.5rem 0 4rem}.minoda-checkout h2{font-size:clamp(2.8rem,13vw,5rem)}}
-@media(prefers-reduced-motion:reduce){.minoda-chat-phone,.minoda-chat-message{animation:none;opacity:1;transform:none}.minoda-mono-button,.minoda-chat-controls button,.minoda-chat-whatsapp{transition:none}}
+/* Financial conversation: shared site typography, colors and easing. */
+.minoda-thermometer{background:#f2f2f2;color:#080808;padding:clamp(36px,4.5vw,56px) 0}
+.minoda-diagnostic-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(290px,.9fr);align-items:center;gap:clamp(28px,5vw,72px)}
+.minoda-diagnostic-copy{max-width:580px}
+.minoda-diagnostic-copy .eyebrow{margin-bottom:18px}
+.minoda-diagnostic-copy h2{font-size:clamp(40px,5.2vw,72px);line-height:.98;letter-spacing:-.065em;margin:0}
+.minoda-diagnostic-description{color:#555;font-size:clamp(15px,1.4vw,19px);line-height:1.55;max-width:38ch;margin:20px 0}
+.minoda-diagnostic-start{gap:16px!important;border-radius:12px!important;padding:9px 12px 9px 20px!important;font-size:14px!important}
+.minoda-arrow-circle{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;border:1px solid #ffffff40;border-radius:50%}
+.minoda-arrow-circle svg{transition:transform 180ms var(--ease-standard)}
+.minoda-diagnostic-facts{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:20px;font-size:11px;color:#666}
+.minoda-diagnostic-facts span+span{position:relative}
+.minoda-diagnostic-facts span+span:before{content:"";display:inline-block;width:3px;height:3px;background:#999;border-radius:50%;vertical-align:middle;margin-right:16px}
+.minoda-diagnostic-disclaimer{color:#737373;font-size:11.5px;line-height:1.5;max-width:44ch;margin-top:16px}
+.minoda-phone-stage{display:grid;justify-items:center;min-width:0}
 
+/* Premium iPhone Mockup (Magic UI Titanium Space Black) */
+.minoda-chat-phone{position:relative;width:304px;max-width:100%;height:530px;padding:8px;border:2px solid #5a5a5c;border-radius:44px;background:linear-gradient(135deg,#38383a 0%,#1c1c1e 35%,#111 65%,#3a3a3c 100%);box-shadow:0 0 0 1px rgba(255,255,255,0.12),0 0 0 3px #18181a,0 0 0 4px #444,0 18px 36px -12px rgba(0,0,0,0.5);isolation:isolate}
+.minoda-chat-phone:before{content:"";position:absolute;inset:2px;border:1px solid rgba(255,255,255,0.18);border-radius:40px;pointer-events:none;z-index:2}
+.minoda-phone-key{position:absolute;width:3px;background:linear-gradient(90deg,#888,#222);border-radius:2px}
+.minoda-phone-key-left{left:-5px;top:100px;height:32px;box-shadow:0 42px 0 #555}
+.minoda-phone-key-right{right:-5px;top:140px;height:52px}
+.minoda-chat-screen{position:relative;display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden;border-radius:34px;background:#fafafa;color:#111}
+.minoda-phone-status{position:relative;flex-shrink:0;height:36px;padding:9px 18px 0;display:flex;align-items:flex-start;justify-content:space-between;color:#151515;font-size:9.5px;font-weight:600}
+.minoda-dynamic-island{position:absolute;top:7px;left:50%;width:84px;height:22px;border-radius:99px;background:#050505;transform:translateX(-50%)}
+.minoda-dynamic-island:after{content:"";position:absolute;right:8px;top:6px;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 60% 40%,#343b43,#0b0e10 60%);box-shadow:0 0 0 1px #161616}
+.minoda-chat-header{display:flex;align-items:center;gap:8px;flex-shrink:0;border-bottom:1px solid #e3e3e3;padding:10px 14px}
+.minoda-chat-header img{width:28px;height:28px;border-radius:7px;filter:grayscale(1)}
+.minoda-chat-header>div{display:grid;gap:1px}
+.minoda-chat-header strong{font-size:13px;font-weight:600}
+.minoda-chat-header span{font-size:9.5px;color:#737373}
+.minoda-chat-online{margin-left:auto;width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 0 2px rgba(16,185,129,0.2)}
+.minoda-chat-progress{padding:9px 14px 7px;flex-shrink:0;display:grid;grid-template-columns:1fr auto;gap:6px;color:#737373;font-size:9px;letter-spacing:.04em}
+.minoda-chat-progress>div{grid-column:1/-1;height:2px;background:#ddd;overflow:hidden}
+.minoda-chat-progress i{display:block;height:100%;width:100%;background:#111;transform:scaleX(0);transform-origin:left;transition:transform 240ms var(--ease-standard)}
+.minoda-chat-log{display:flex;flex:1 1 0;min-height:0;flex-direction:column;gap:8px;overflow-y:auto;overscroll-behavior:contain;padding:8px 12px 10px;scrollbar-width:thin;scrollbar-color:#ccc transparent}
+.minoda-chat-message{max-width:92%;flex-shrink:0;animation:minoda-message-in 220ms var(--ease-standard) both}
+.minoda-chat-message p{margin:0;border-radius:14px 14px 14px 4px;padding:8px 11px;background:#ededed;color:#222;font-size:11.5px;line-height:1.45;overflow-wrap:anywhere}
+.minoda-chat-message.is-user{align-self:flex-end;max-width:85%}
+.minoda-chat-message.is-user p{background:#111;color:#fff;border-radius:14px 14px 4px 14px}
+.minoda-chat-message.is-typing p{display:flex;gap:4px;align-items:center;height:28px;width:46px}
+.minoda-chat-message.is-typing i{display:block;width:4px;height:4px;border-radius:50%;background:#777;animation:minoda-typing 1s ease-in-out infinite}
+.minoda-chat-message.is-typing i:nth-child(2){animation-delay:.15s}
+.minoda-chat-message.is-typing i:nth-child(3){animation-delay:.3s}
+.minoda-chat-controls{display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0;padding:0 12px 8px}
+.minoda-chat-controls:empty{display:none}
+.minoda-chat-controls button,.minoda-chat-whatsapp{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;border:1px solid #ccc;border-radius:9px;background:#fff;color:#111;padding:7px 11px;font-family:inherit;font-size:11px;line-height:1.3;cursor:pointer;text-decoration:none;transition:background 180ms var(--ease-standard),border-color 180ms var(--ease-standard)}
+.minoda-chat-controls button[data-chat-action="begin"]{width:100%;background:#111;color:#fff;border-color:#111;font-weight:500}
+.minoda-chat-controls button[data-chat-action="begin"]:hover{background:#222}
+.minoda-chat-controls button[data-chat-action="skip"]{min-height:22px;background:none;border:none;text-decoration:underline;color:#666;padding:0;font-size:10px}
+.minoda-chat-controls button[data-chat-action="answer"]{flex:1;background:#fff;border-color:#bbb;font-weight:500}
+.minoda-chat-controls button[data-chat-action="answer"]:first-child{background:#111;color:#fff;border-color:#111}
+.minoda-chat-controls .minoda-chat-whatsapp{width:100%;background:#111;border-color:#111;color:#fff;font-weight:500}
+.minoda-chat-controls .minoda-chat-whatsapp:hover{background:#222}
+.minoda-chat-composer{display:flex;gap:6px;padding:7px 10px 8px;flex-shrink:0;border-top:1px solid #e5e5e5;background:#fff}
+.minoda-chat-composer input{min-width:0;flex:1;border:1px solid #d4d4d4;border-radius:20px;background:#fff;padding:8px 12px;color:#111;font-family:inherit;font-size:13.5px}
+.minoda-chat-composer input::placeholder{font-size:11.5px;color:#888}
+.minoda-chat-composer input:focus-visible{outline:2px solid #333;outline-offset:1px}
+.minoda-chat-composer button{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;border:1px solid #111;border-radius:50%;background:#111;color:#fff;cursor:pointer;transition:transform 140ms var(--ease-standard),background 140ms var(--ease-standard)}
+.minoda-chat-composer button:hover{background:#2a2a2a;transform:scale(1.04)}
+.minoda-chat-composer button:disabled{opacity:.35;cursor:wait}
+.minoda-chat-error{flex-shrink:0;margin:0;padding:0 12px 4px;color:#d32f2f;font-size:9.5px}
+.minoda-chat-error:empty{display:none}
+.minoda-chat-bottom{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:6px;min-height:18px;padding:0 8px;color:#777;font-size:8px}
+.minoda-chat-bottom button{border:0;background:none;text-decoration:underline;color:#555;cursor:pointer;font-size:8.5px;padding:3px 0}
+.minoda-phone-home{flex-shrink:0;width:80px;height:3.5px;border-radius:99px;background:#111;margin:6px auto 5px}
+.minoda-thermometer [hidden]{display:none!important}
+.minoda-phone-caption{text-align:center;color:#737373;font-size:9.5px;line-height:1.4;margin-top:14px}
+.minoda-phone-caption button{display:block;margin:4px auto 0;color:inherit;border:none;background:none;text-decoration:underline;font-size:9.5px;cursor:pointer}
+.minoda-thermometer button:focus-visible,.minoda-checkout a:focus-visible{outline:2px solid #888;outline-offset:4px}
+
+/* Gestão Financeira (Checkout) */
+.minoda-checkout{background:#080808;color:#f2f2f2;padding:clamp(36px,4.5vw,52px) 0}
+.minoda-checkout-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.minoda-checkout h2{font-size:clamp(32px,4vw,52px);line-height:1.04;letter-spacing:-.055em;margin:0}
+.minoda-checkout .eyebrow{color:#aaa;margin-bottom:14px}
+.minoda-checkout-action p{color:#bbb;line-height:1.6;max-width:42ch;margin:0 0 18px;font-size:clamp(14px,1.2vw,16px)}
+.minoda-checkout-action small{display:block;margin-top:12px;color:#888;font-size:10.5px}
+.minoda-checkout .btn{gap:16px;border-radius:12px;padding:9px 12px 9px 20px;font-size:14px}
+.minoda-checkout .minoda-arrow-circle{border-color:#0003}
+
+@keyframes minoda-message-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes minoda-typing{0%,60%,100%{opacity:.35;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+@keyframes minoda-phone-in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.minoda-chat-phone{animation:minoda-phone-in 500ms var(--ease-standard) both}
+
+@media(hover:hover) and (pointer:fine){
+  .minoda-diagnostic-start:hover .minoda-arrow-circle svg,.minoda-checkout .btn:hover .minoda-arrow-circle svg{transform:translate(2px,-2px)}
+  .minoda-chat-controls button:hover{border-color:#111}
+}
+
+@media(max-width:767px){
+  .minoda-thermometer{padding:32px 0}
+  .minoda-diagnostic-grid,.minoda-checkout-grid{grid-template-columns:1fr;gap:28px}
+  .minoda-diagnostic-copy h2{font-size:clamp(34px,8vw,52px)}
+  .minoda-diagnostic-description{margin:14px 0 16px;font-size:15px}
+  .minoda-diagnostic-facts{margin-top:16px;gap:6px 12px;font-size:10px}
+  .minoda-diagnostic-facts span+span:before{margin-right:12px}
+  .minoda-chat-phone{width:284px;height:470px;border-radius:38px}
+  .minoda-chat-phone:before{border-radius:34px}
+  .minoda-chat-screen{border-radius:28px}
+  .minoda-phone-stage{padding:0 4px}
+  .minoda-diagnostic-start{max-width:100%;gap:12px!important}
+  .minoda-checkout{padding:32px 0}
+  .minoda-checkout h2{font-size:clamp(28px,7vw,42px)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .minoda-chat-phone,.minoda-chat-message,.minoda-chat-message.is-typing i{animation:none;opacity:1;transform:none}
+  .minoda-chat-progress i,.minoda-arrow-circle svg{transition:none}
+  .minoda-phone-caption button{display:none}
+}
