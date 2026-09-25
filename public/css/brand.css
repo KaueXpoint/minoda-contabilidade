@@ -1,0 +1,27 @@
+:root{--minoda-ink:#16323d;--minoda-gold:#c08a3e;--minoda-paper:#faf7f1}
+html,body{overflow-x:clip}
+.minoda-brand-logo{width:190px;height:auto;display:block;object-fit:contain}
+.minoda-brand-footer{width:205px;height:auto;display:block;object-fit:contain}
+.minoda-loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--minoda-ink);pointer-events:none;animation:minoda-loader-failsafe .2s 1.5s forwards}
+.minoda-loader img{width:clamp(210px,24vw,310px);height:auto}
+@keyframes minoda-loader-failsafe{to{opacity:0;visibility:hidden}}
+.minoda-brand-section{padding:0 0 clamp(3rem,6vw,6rem);background:#f2f2f2}
+.minoda-brand-film{position:relative;width:100%;max-width:1100px;margin:auto;aspect-ratio:848/478;border-radius:28px;overflow:hidden;background:var(--minoda-paper);isolation:isolate}
+.minoda-brand-film video{display:block;width:100%;height:100%;object-fit:contain}
+.minoda-brand-film button{position:absolute;right:20px;bottom:20px;border:1px solid #16323d35;background:#faf7f1e8;color:var(--minoda-ink);font-size:.75rem;padding:11px 15px;border-radius:999px;cursor:pointer;transition:background 180ms var(--ease-standard)}
+@media(hover:hover) and (pointer:fine){.minoda-brand-film button:hover{background:#fff}}
+.btn-primary{background:var(--minoda-ink)!important}
+.minoda-tax-in-view main>.fixed.inset-x-0.bottom-0{visibility:hidden!important;pointer-events:none!important;opacity:0!important}
+@media(max-width:640px){.minoda-brand-logo{width:158px}.minoda-brand-footer{width:180px}.minoda-brand-film{border-radius:18px}.minoda-brand-film button{right:10px;bottom:10px;padding:8px 11px;font-size:.68rem}}
+@media(prefers-reduced-motion:reduce){.minoda-loader{animation-duration:.01ms;animation-delay:.1s}.minoda-brand-film button{transition:none}}
+
+/* Keep essential first-screen content available before motion initializes. */
+section[aria-labelledby="hero-title"] .container-xl.relative [style*="opacity"],section[aria-labelledby="hero-title"] #hero-title span{opacity:1!important;transform:none!important}
+@media(max-width:767px){section[aria-labelledby="hero-title"]>.container-xl.absolute>.btn{display:none!important}}
+@media(prefers-reduced-motion:no-preference){#hero-title{animation:minoda-hero-enter .55s cubic-bezier(.22,1,.36,1) both}@keyframes minoda-hero-enter{from{translate:0 12px}to{translate:0 0}}}
+
+.minoda-carousel-actions{display:flex;justify-content:flex-end;padding:0 clamp(20px,3vw,40px)}
+.minoda-carousel-toggle{font-size:.75rem;border:1px solid #ffffff40;color:#dedede;border-radius:999px;padding:10px 16px;cursor:pointer}
+.minoda-carousel-paused .minoda-client-track{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.minoda-carousel-actions{display:none}}
+@media(max-width:640px){footer .container-xl>div{flex-wrap:wrap}}

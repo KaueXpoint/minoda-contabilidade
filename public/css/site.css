@@ -1,0 +1,105 @@
+/* Minoda: September 2026 content update. Scoped to the changed sections. */
+.minoda-client-row{overflow-x:auto;scrollbar-width:none;padding:6px 0;overscroll-behavior-x:contain}
+.minoda-client-row::-webkit-scrollbar{display:none}
+.minoda-client-track{--client-gap:24px;display:flex;width:max-content;gap:var(--client-gap);animation-name:minoda-clients-scroll;will-change:transform}
+.minoda-client-row:hover .minoda-client-track{animation-play-state:paused}
+.minoda-client-track:focus-within{animation:none;transform:none}
+.minoda-preview{position:relative;display:block;flex:none;width:clamp(260px,26vw,400px);aspect-ratio:.867;border:6px solid #292929;border-radius:24px;overflow:hidden;background:#1a1a1a;color:#fff;text-decoration:none;transform:translateZ(0)}
+.minoda-preview>img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .7s ease-out}
+.minoda-preview:hover>img{transform:scale(1.035)}
+.minoda-preview-caption{position:absolute;inset:auto 0 0;display:flex;flex-direction:column;gap:5px;padding:45px 20px 20px;background:linear-gradient(transparent,rgba(0,0,0,.92) 42%)}
+.minoda-preview-kind{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#ccc}
+.minoda-preview-name{font-size:clamp(19px,1.65vw,25px);font-weight:500;letter-spacing:-.035em;line-height:1.2;padding-right:25px}
+.minoda-preview-address{font-size:11px;color:#d0d0d0;overflow-wrap:anywhere}
+.minoda-preview-arrow{position:absolute;right:18px;bottom:37px;font-size:24px}
+.minoda-preview:focus-visible{outline:3px solid #fff;outline-offset:-4px}
+@keyframes minoda-clients-scroll{to{transform:translateX(calc(-50% - var(--client-gap)/2))}}
+@media(max-width:767px){.minoda-client-track{--client-gap:20px}.minoda-preview-caption{padding:40px 15px 16px}}
+@media(prefers-reduced-motion:reduce){.minoda-client-track{animation:none!important;transform:none;will-change:auto}.minoda-preview[aria-hidden="true"]{display:none}.minoda-preview>img{transition:none}.minoda-preview:hover>img{transform:none}}
+/* Scroll comparison: a sticky explanatory stage, with a static fallback. */
+.minoda-tax-section{background:#f2f2f2;color:#080808;overflow:visible}
+.minoda-tax-intro{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end;margin-bottom:4.5rem}
+.minoda-tax-intro .eyebrow{color:#666;margin-bottom:1.5rem}
+.minoda-tax-intro>.body-lg{color:#555;max-width:42ch}
+.minoda-tax-sticky{display:grid;grid-template-columns:.8fr 1.2fr;column-gap:4rem;row-gap:1.5rem;align-items:center}
+.minoda-tax-narrative{min-width:0}
+.minoda-tax-chapters{display:grid;gap:2rem}
+.minoda-tax-chapter[data-chapter="1"]{display:none}
+.minoda-tax-overline{display:block;color:#777;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.3rem}
+.minoda-tax-chapter h3{font-size:clamp(1.75rem,3vw,3rem);font-weight:500;letter-spacing:-.055em;line-height:1.07;margin:0 0 1.3rem}
+.minoda-tax-chapter>p{color:#616161;line-height:1.7;max-width:31ch;font-size:1rem}
+.minoda-tax-scroll-hint{display:none;color:#777;font-size:.72rem;align-items:center;gap:.75rem;margin-top:1.75rem}
+.minoda-tax-scroll-hint>span{font-size:1.2rem}
+.minoda-tax-chart{position:relative;border:1px solid #303631;border-radius:26px;background:#111713;color:#f5f5f5;padding:2rem;margin:0;overflow:hidden;box-shadow:0 20px 65px #162b1612}
+.minoda-tax-chart figcaption{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2rem;font-size:.95rem;letter-spacing:-.02em}
+.minoda-tax-live-label{display:inline-flex;align-items:center;border:1px solid #3e4942;border-radius:99px;padding:.5rem .7rem;font-size:.62rem;color:#b7c5bc;white-space:nowrap}
+.minoda-tax-plot{position:relative;height:280px;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;border-bottom:1px solid #ffffff26;margin-top:1rem}
+.minoda-tax-grid{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none}
+.minoda-tax-grid i{border-top:1px dashed #ffffff12;width:100%}
+.minoda-tax-plot-set{position:relative;min-width:0}
+.minoda-tax-plot-label{position:absolute;left:0;top:-1.5rem;color:#a7b6aa;font-size:.7rem}
+.minoda-tax-columns,.minoda-tax-ghosts{position:absolute;inset:0;display:flex;align-items:flex-end;gap:12px;padding:0 10px}
+.minoda-tax-columns i,.minoda-tax-ghosts i{display:block;flex:1;min-width:0;border-radius:7px 7px 0 0;transform-origin:50% 100%}
+.minoda-tax-before .minoda-tax-columns i{background:linear-gradient(#d8786b,#903f38);border-top:2px solid #edaa9d}
+.minoda-tax-after .minoda-tax-columns i{background:linear-gradient(#9dd8b7,#398568);border-top:2px solid #c4f8db}
+.minoda-tax-after .minoda-tax-columns i:nth-child(3n){background:linear-gradient(#9dc8e0,#527d99);border-color:#caeaff}
+.minoda-tax-ghosts{display:none}
+.minoda-tax-ghosts i{border:1px dashed #d8786b70;background:repeating-linear-gradient(-45deg,transparent,transparent 5px,#c6726310 5px,#c6726310 6px)}
+.minoda-tax-scan{display:none;position:absolute;inset:0;background:linear-gradient(90deg,transparent 35%,#e1ead71a 99%,#e1ead7 100%);pointer-events:none}
+.minoda-tax-scan span{position:absolute;right:10px;top:14px;color:#d6e4d9;font-size:.65rem;letter-spacing:.03em}
+.minoda-tax-legend{display:flex;gap:1.5rem;margin-top:1.25rem;font-size:.68rem;color:#bdc7c0}
+.minoda-tax-legend>span{display:flex;gap:.45rem;align-items:center}
+.minoda-tax-legend i{width:6px;height:6px;border-radius:50%}
+.minoda-tax-key-before{background:#d8786b}.minoda-tax-key-after{background:#9dd8b7}
+.minoda-tax-controls{display:none;grid-template-columns:repeat(3,1fr);gap:5px;border-top:1px solid #ffffff15;margin-top:1.5rem;padding-top:1rem}
+.minoda-tax-controls button{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.7rem .25rem;border-radius:8px;background:transparent;color:#acb6af;font-size:.75rem;cursor:pointer;transition:background 180ms var(--ease-standard),color 180ms var(--ease-standard)}
+.minoda-tax-controls button>span{font-size:.57rem;opacity:.55}
+.minoda-tax-controls button[aria-pressed="true"]{background:#e2eddf;color:#152519}
+.minoda-tax-controls button:focus-visible{outline:2px solid #e2eddf;outline-offset:2px}
+@media(hover:hover) and (pointer:fine){.minoda-tax-controls button:not([aria-pressed="true"]):hover{background:#ffffff0d;color:#fff}}
+.minoda-tax-progress{display:none;position:absolute;bottom:0;left:0;right:0;height:3px;background:#ffffff0b}
+.minoda-tax-progress span{display:block;height:100%;background:#b5d7ad}
+.minoda-tax-note{grid-column:2;color:#737373;font-size:.7rem;line-height:1.65;margin:0;max-width:none;padding:0;border:0}
+.minoda-tax-note strong{font-weight:500;color:#484848}
+.minoda-tax-enhanced .minoda-tax-story{height:calc(100svh + 1000px)}
+.minoda-tax-enhanced .minoda-tax-sticky{position:sticky;top:clamp(24px,calc((100svh - 540px)/2),140px)}
+.minoda-tax-enhanced .minoda-tax-chapters{position:relative;height:240px;display:block}
+.minoda-tax-enhanced .minoda-tax-chapter{position:absolute;inset:0;display:block}
+.minoda-tax-enhanced .minoda-tax-plot{display:block}
+.minoda-tax-enhanced .minoda-tax-plot-set{position:absolute;inset:0}
+.minoda-tax-enhanced .minoda-tax-plot-label{display:none}
+.minoda-tax-enhanced .minoda-tax-ghosts{display:flex}
+.minoda-tax-enhanced .minoda-tax-scan{display:block}
+.minoda-tax-enhanced .minoda-tax-controls{display:grid}
+.minoda-tax-enhanced .minoda-tax-progress{display:block}
+.minoda-tax-enhanced .minoda-tax-scroll-hint{display:flex}
+.minoda-tax-in-view main>.fixed.inset-x-0.bottom-0{visibility:hidden!important;pointer-events:none!important;opacity:0!important}
+@media(max-width:1000px){.minoda-tax-sticky{column-gap:2rem;grid-template-columns:.8fr 1.2fr}.minoda-tax-chart{padding:1.5rem}.minoda-tax-intro{gap:3rem}.minoda-tax-chart figcaption{flex-wrap:wrap;gap:.7rem}.minoda-tax-plot{height:240px}}
+@media(max-width:760px){
+ .minoda-tax-intro{grid-template-columns:1fr;gap:1.5rem;margin-bottom:3rem}
+ .minoda-tax-intro>.body-lg{max-width:45ch}
+ .minoda-tax-sticky{grid-template-columns:1fr;gap:1rem}
+ .minoda-tax-chapter h3{font-size:1.9rem;margin-bottom:.65rem}
+ .minoda-tax-chapter>p{font-size:.85rem;line-height:1.5;max-width:43ch}
+ .minoda-tax-overline{font-size:.57rem;margin-bottom:.75rem}
+ .minoda-tax-note{grid-column:1;font-size:.65rem;line-height:1.5}
+ .minoda-tax-chart{padding:1.25rem;border-radius:20px}
+ .minoda-tax-chart figcaption{font-size:.85rem;margin-bottom:1.3rem;flex-wrap:nowrap}
+ .minoda-tax-live-label{font-size:.55rem;padding:.4rem .5rem}
+ .minoda-tax-plot{height:clamp(140px,25svh,220px);gap:1rem}
+ .minoda-tax-columns,.minoda-tax-ghosts{gap:9px;padding:0 5px}
+ .minoda-tax-legend{font-size:.58rem;gap:1rem;margin-top:.8rem}
+ .minoda-tax-controls{margin-top:.85rem;padding-top:.6rem}
+ .minoda-tax-controls button{font-size:.7rem;padding:.6rem .2rem}
+ .minoda-tax-scroll-hint{display:none!important}
+ .minoda-tax-enhanced .minoda-tax-chapters{height:145px}
+ .minoda-tax-enhanced .minoda-tax-story{height:calc(100svh + 850px)}
+ .minoda-tax-enhanced .minoda-tax-sticky{top:20px}
+}
+@media(max-width:760px) and (max-height:700px){.minoda-tax-enhanced .minoda-tax-chapters{height:115px}.minoda-tax-chapter h3{font-size:1.65rem}.minoda-tax-chapter>p{font-size:.78rem}.minoda-tax-plot{height:140px}.minoda-tax-chart{padding:1rem}.minoda-tax-chart figcaption{margin-bottom:1rem}.minoda-tax-sticky{gap:.75rem}}
+@media(min-width:761px) and (max-height:650px){.minoda-tax-plot{height:180px}.minoda-tax-chart{padding:1.25rem}.minoda-tax-chart figcaption{margin-bottom:1.2rem}}
+@media(prefers-reduced-motion:reduce){.minoda-tax-controls button{transition:none}}
+
+a:focus-visible,button:focus-visible{outline:2px solid #477db0;outline-offset:5px}
+
+html,body{overflow-x:clip}

@@ -1,0 +1,8 @@
+.openai
+.env*
+.git
+node_modules
+README.md
+serve.mjs
+source
+*.zip
