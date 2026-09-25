@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://minodacontabilidade.com.br/sitemap.xml

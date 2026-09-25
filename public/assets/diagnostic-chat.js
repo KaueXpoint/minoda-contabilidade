@@ -484,7 +484,7 @@ export function mountThermometer(root) {
       doc.setFontSize(8);
       doc.setTextColor(120, 120, 120);
       doc.text('Diagnóstico baseado em autoavaliação. Não substitui uma auditoria e consultoria contábil individualizada.', 20, 275);
-      doc.text('Minoda Consultoria · minodaconsultoria.com.br · WhatsApp: (11) 96892-0901', 20, 281);
+      doc.text('Minoda Contabilidade · minodacontabilidade.com.br · WhatsApp: (11) 96892-0901', 20, 281);
 
       doc.save(`diagnostico-minoda-${(profile.company || 'empresa').toLowerCase().replace(/\s+/g, '-')}.pdf`);
     } catch (err) {
