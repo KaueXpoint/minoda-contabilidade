@@ -29,10 +29,17 @@ export function mountBrandVideo(root, gsap, ScrollTrigger) {
 }
 
 export function revealBrand(loader, gsap, done) {
+  if (window.__minodaLoader) {
+    window.__minodaLoader.finish(gsap, done);
+    return () => {};
+  }
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let visited = false;
-  try { visited = sessionStorage.getItem('minoda-visited') === '1';sessionStorage.setItem('minoda-visited','1'); } catch {}
   document.body.dataset.loaded = 'true';
-  const animation = gsap.to(loader, {opacity:0,duration:reduced?.1:.28,delay:visited?0:.25,ease:'power2.out',onComplete:done});
+  const animation = gsap.to(loader, {
+    yPercent: -100,
+    duration: reduced ? 0.1 : 0.85,
+    ease: 'power4.inOut',
+    onComplete: done
+  });
   return () => animation.kill();
 }
